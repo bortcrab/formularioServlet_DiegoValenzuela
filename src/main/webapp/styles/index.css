@@ -49,6 +49,7 @@ footer {
     border-radius: 0.3rem;
     color: #E4FAF4;
     padding: 0.6rem 1rem;
+    cursor: pointer;
 }
 
 header {

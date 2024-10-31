@@ -6,12 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/index.css">
         <title>Formulario</title>
     </head>
 
@@ -19,12 +18,11 @@
         <header>
             <h1>Create Account</h1>
         </header>
-        <form action="">
-
+        <form action="Formulario" method="POST" id="formulario"enctype="multipart/form-data">
             <div class="fila">
                 <section class="campo-mitad">
                     <label for="firstName">First name *</label>
-                    <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required>
+                    <input type="text" name="firstName" id="firstName" placeholder="Enter your first name">
                 </section>
 
                 <section class="campo-mitad">
@@ -36,20 +34,20 @@
             <div class="fila">
                 <section class="campo-completo">
                     <label for="email">Email *</label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    <input type="email" name="email" id="email" placeholder="Enter your email">
                 </section>
             </div>
 
             <div class="fila">
                 <section class="campo-mitad">
                     <label for="password">Password *</label>
-                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                    <input type="password" name="password" id="password" placeholder="Enter your password">
                 </section>
 
                 <section class="campo-mitad">
                     <label for="confirmPassword">Confirm Password *</label>
                     <input type="password" name="confirmPassword" id="confirmPassword"
-                           placeholder="Enter your password again" required>
+                           placeholder="Enter your password again">
                 </section>
             </div>
 
@@ -118,8 +116,9 @@
                     <textarea name="bio" id="bio"></textarea>
                 </section>
             </div>
-
         </form>
-        <footer><input type="submit" id="submit" value="Create"></footer>
+        <footer>
+            <input type="submit" id="submit" form="formulario" value="Create">
+        </footer>
     </body>
 </html>

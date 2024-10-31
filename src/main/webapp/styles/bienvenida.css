@@ -1,0 +1,72 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 31 oct 2024, 16:13:04
+    Author     : Diego Valenzuela Parra
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    font-family: Roboto;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+h1 {
+    text-align: center;
+}
+
+.tarjeta {
+    position: relative;
+    width: 700px;
+    height: fit-content;
+    padding: 1rem;
+    margin: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../images/fondo_tarjeta.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    filter: brightness(0.4);
+    z-index: -1;
+    border-radius: 1rem;
+}
+
+header {
+    display: flex;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
+    margin-right: 1rem;
+}
+
+p {
+    color: white;
+    font-size: 1.1rem;
+}
+
+span {
+    font-weight: bold;
+}
+
+.bio {
+    margin-bottom: 0px;
+}
