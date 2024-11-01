@@ -18,7 +18,7 @@
         <header>
             <h1>Create Account</h1>
         </header>
-        <form action="Formulario" method="POST" id="formulario"enctype="multipart/form-data">
+        <form action="Formulario" method="POST" id="formulario" enctype="multipart/form-data">
             <div class="fila">
                 <section class="campo-mitad">
                     <label for="firstName">First name *</label>
@@ -55,9 +55,9 @@
                 <section class="campo-mitad">
                     <label for="gender">Gender</label>
                     <div class="radio-group">
-                        <input type="radio" name="gender" id="male">
+                        <input type="radio" name="gender" id="male" value="Male">
                         <label for="male">Male</label>
-                        <input type="radio" name="gender" id="female">
+                        <input type="radio" name="gender" id="female"value="Female">
                         <label for="female">Female</label>
                     </div>
                 </section>
@@ -65,13 +65,13 @@
                 <section class="campo-mitad">
                     <label for="hobbies">Hobbies</label>
                     <div class="cbx-group">
-                        <input type="checkbox" name="hobbies" id="music">
+                        <input type="checkbox" name="hobbies" id="hobby1" value="Music">
                         <label for="music">Music</label>
-                        <input type="checkbox" name="hobbies" id="sports">
+                        <input type="checkbox" name="hobbies" id="hobby2" value="Sports">
                         <label for="sports">Sports</label>
-                        <input type="checkbox" name="hobbies" id="travel">
+                        <input type="checkbox" name="hobbies" id="hobby3" value="Travel">
                         <label for="travel">Travel</label>
-                        <input type="checkbox" name="hobbies" id="movies">
+                        <input type="checkbox" name="hobbies" id="hobby4" value="Movies">
                         <label for="movies">Movies</label>
                     </div>
                 </section>

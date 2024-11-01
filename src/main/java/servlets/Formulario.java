@@ -6,6 +6,8 @@ package servlets;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -49,42 +51,58 @@ public class Formulario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String destino = "bienvenida.jsp";
+        String destino;
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
         String gender = request.getParameter("gender");
-        String hobbies = request.getParameter("hobbies");
+        String[] hobbiesArray = request.getParameterValues("hobbies");
         String incomeSource = request.getParameter("incomeSource");
         String income = request.getParameter("income");
         String age = request.getParameter("age");
         String bio = request.getParameter("bio");
         Part filePart = request.getPart("picture");
-        String fileName = filePart.getSubmittedFileName();
 
-        // Ruta para guardar la imagen en el servidor
-        String uploadPath = getServletContext().getRealPath("") + "uploads";
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
+        if ((firstName == null || firstName.equals(""))
+                || (lastName == null || lastName.equals(""))
+                || (email == null || email.equals(""))
+                || (password == null || password.equals(""))
+                || (confirmPassword == null || confirmPassword.equals(""))
+                || (gender == null || gender.equals(""))
+                || (hobbiesArray == null || hobbiesArray.equals(""))
+                || (incomeSource == null || incomeSource.equals(""))
+                || (income == null || income.equals(""))
+                || (age == null || age.equals(""))
+                || (bio == null || bio.equals(""))
+                || (filePart == null || filePart.equals(""))) {
+            destino = "index.jsp";
+        } else {
+            destino = "bienvenida.jsp";
+            String hobbies = String.join(", ", hobbiesArray);
+            String fileName = filePart.getSubmittedFileName();
+            String uploadPath = getServletContext().getRealPath("") + "uploads";
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+
+            filePart.write(uploadPath + File.separator + fileName);
+
+            request.setAttribute("firstName", firstName);
+            request.setAttribute("lastName", lastName);
+            request.setAttribute("email", email);
+            request.setAttribute("password", password);
+            request.setAttribute("confirmPassword", confirmPassword);
+            request.setAttribute("gender", gender);
+            request.setAttribute("hobbies", hobbies);
+            request.setAttribute("incomeSource", incomeSource);
+            request.setAttribute("income", income);
+            request.setAttribute("age", age);
+            request.setAttribute("bio", bio);
+            request.setAttribute("picturePath", "uploads/" + fileName);
         }
-        
-        filePart.write(uploadPath + File.separator + fileName);
-
-        request.setAttribute("firstName", firstName);
-        request.setAttribute("lastName", lastName);
-        request.setAttribute("email", email);
-        request.setAttribute("password", password);
-        request.setAttribute("confirmPassword", confirmPassword);
-        request.setAttribute("gender", gender);
-        request.setAttribute("hobbies", hobbies);
-        request.setAttribute("incomeSource", incomeSource);
-        request.setAttribute("income", income);
-        request.setAttribute("age", age);
-        request.setAttribute("bio", bio);
-        request.setAttribute("picturePath", "uploads/" + fileName);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
         dispatcher.forward(request, response);
